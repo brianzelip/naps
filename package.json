@@ -5,16 +5,17 @@
   "main": "start.js",
   "scripts": {
     "watch": "nodemon ./start.js --ignore public/",
-    "css":
-      "postcss -u postcss-custom-properties postcss-color-function postcss-import autoprefixer cssnano -d public/dist/ public/css/_.css --no-map --watch",
-    "start":
-      "concurrently \"npm run watch\" \"npm run css\" --names \"💻,🛠\" --prefix name"
+    "css": "postcss -u postcss-custom-properties postcss-color-function postcss-import autoprefixer cssnano -d public/dist/ public/css/_.css --no-map --watch",
+    "start": "concurrently \"npm run watch\" \"npm run css\" --names \"💻,🛠\" --prefix name"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/brianzelip/"
   },
-  "keywords": ["node", "express"],
+  "keywords": [
+    "node",
+    "express"
+  ],
   "author": "Brian Zelip, http://zelip.me",
   "license": "MIT",
   "dependencies": {
