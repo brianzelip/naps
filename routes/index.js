@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const _Controller = require('../controllers/_Controller');
+const napController = require('../controllers/napController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
-router.get('/', _Controller.landingPage);
+router.get('/', napController.landingPage);
 
 module.exports = router;
