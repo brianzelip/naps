@@ -1,0 +1,43 @@
+{
+  "name": "mvc-boilerplate",
+  "version": "0.1.0",
+  "description": "",
+  "main": "start.js",
+  "scripts": {
+    "watch": "nodemon ./start.js --ignore public/",
+    "css":
+      "postcss -u postcss-custom-properties postcss-color-function postcss-import autoprefixer cssnano -d public/dist/ public/css/_.css --no-map --watch",
+    "start":
+      "concurrently \"npm run watch\" \"npm run css\" --names \"💻,🛠\" --prefix name"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brianzelip/"
+  },
+  "keywords": ["node", "express"],
+  "author": "Brian Zelip, http://zelip.me",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "ava": "^0.23.0",
+    "axios": "^0.17.1",
+    "cheerio": "^1.0.0-rc.2",
+    "concurrently": "^3.5.0",
+    "cssnano": "^3.10.0",
+    "nodemon": "^1.12.1",
+    "nyc": "^11.3.0",
+    "postcss": "^6.0.14",
+    "postcss-cli": "^4.1.1",
+    "postcss-color-function": "^4.0.1",
+    "postcss-custom-properties": "^6.2.0",
+    "postcss-import": "^11.0.0"
+  }
+}
