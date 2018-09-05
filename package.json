@@ -5,7 +5,7 @@
   "main": "start.js",
   "scripts": {
     "watch": "nodemon ./start.js --ignore public/",
-    "css": "postcss -u postcss-custom-properties postcss-color-function postcss-import autoprefixer cssnano -d public/dist/ public/css/_.css --no-map --watch",
+    "css": "postcss -u postcss-custom-properties postcss-color-function postcss-import autoprefixer cssnano -d public/dist/ public/css/naps.css --no-map --watch",
     "start": "concurrently \"npm run watch\" \"npm run css\" --names \"💻,🛠\" --prefix name"
   },
   "repository": {
