@@ -1,0 +1,52 @@
+form
+  div
+    label(for="startTime") Start time:
+    - const date = new Date;
+    - const hours = date.getHours();
+    - const mins = date.getMinutes();
+    input(type="time" id="startTime" name="startTime" value=`${hours}:${mins}` required)
+  div
+    label(for="endTime") End time:
+    input(type="time" id="endTime" name="endTime" required)
+
+  //- .flex.flex-column.sm-flex-row
+  //-   .col-12.sm-col-6.sm-mr3
+  //-     .mb2
+  //-       label(for="first") First name
+  //-       input.block.col-12.field(type="text" id="first" name="nameFirst" value=(member.nameFirst || ''))
+  //-     .mb2
+  //-       label(for="last") Last name
+  //-       input.block.col-12.field(type="text" id="last" name="nameLast" value=(member.nameLast || ''))
+  //-     .mb2
+  //-       label(for="title") Title
+  //-       input.block.col-12.field(type="text" name="title" value=(member.title || ''))
+  //-     .mb2
+  //-       label(for="bio") Bio
+  //-       textarea.block.col-12.field(name="bio")= member.bio || ''
+  //-     - const skills = ['admin', 'animation', 'back end', 'content', 'css', 'design', 'front end', 'illustration', 'instruction', 'javascript', 'python', 'ruby', 'rust', 'security', 'typography', 'ui/ux', 'visualization']
+  //-     - const skillSet = member.skills || []
+  //-     .mb2
+  //-       label(for="skills") Skills
+  //-       ul.m0.list-reset.flex.flex-wrap
+  //-         each skill in skills
+  //-           li.skill
+  //-             input(type="checkbox" id=skill value=skill name="skills" checked=(skillSet.includes(skill)))
+  //-             label(for=skill)= skill
+
+  //-   .col-12.sm-col-6
+  //-     .mb2
+  //-       label(for="email") Email address
+  //-       input.block.col-12.field(type="text" id="email" name="email" value=(member.email || ''))
+  //-     - const socials = ['GitHub', 'Dribbble', 'Twitter', 'LinkedIn']
+  //-     each social in socials
+  //-       .mb2
+  //-         label(for=`${social.toLowerCase()}Url`)= `${social} address`
+  //-         .input-group-position
+  //-           i.input-group-position__icon.fa.fa-fw(class=`fa-${social.toLowerCase()}`)
+  //-           input.input-group-position__input.field(type="text" id=`${social.toLowerCase()}Url` name=`${social.toLowerCase()}Url` value=(member[`${social.toLowerCase()}Url`] || ''))
+  //-     .mb2
+  //-       label(for="photoFull") Photo
+  //-       input.block.col-12.field(type="file" id="photoFull" name="photoFull" accept="image/gif, image/png, image/jpeg")
+  //-       if member.photoFull
+  //-         img.mt1(src=`/uploads/${member.photoFull}`, alt=member.name width=150)
+  //- input.btn.btn-primary.col-12.mt2(type="submit" value="Save →")
