@@ -18,3 +18,9 @@ A nap has:
 - end time (as a string entered by the user/browser)
 - length (calculated)
 - notes about the nap (as a string entered by the user/browser)
+
+## project customization steps starting from mvc-boilerplate
+
+1. init css
+2. update controllername and routes w/ updated controller name
+3. create home page view and update controller and routes accordingly
