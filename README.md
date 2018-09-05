@@ -24,3 +24,7 @@ A nap has:
 1. init css
 2. update controllername and routes w/ updated controller name
 3. create home page view and update controller and routes accordingly
+
+## dev notes
+
+1. time, https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time
