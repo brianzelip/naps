@@ -1,4 +1,4 @@
-form
+form.container
   div
     label(for="startTime") Start time:
     - const date = new Date;
@@ -6,8 +6,14 @@ form
     - const mins = date.getMinutes();
     input(type="time" id="startTime" name="startTime" value=`${hours}:${mins}` required)
   div
+    label(for="startDate") Start date:
+    input(type="date" id="startDate" name="startDate" required)
+  div
     label(for="endTime") End time:
     input(type="time" id="endTime" name="endTime" required)
+  div
+    label(for="startDate") Start date:
+    input(type="date" id="startDate" name="startDate" required)
   div
     label(for="duration") Duration:
     input(type="text" value="33" id="duration" name="duration" disabled)
