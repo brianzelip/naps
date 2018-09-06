@@ -8,6 +8,22 @@ form
   div
     label(for="endTime") End time:
     input(type="time" id="endTime" name="endTime" required)
+  div
+    label(for="duration") Duration:
+    input(type="text" value="33" id="duration" name="duration" disabled)
+  span
+  script(src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js")
+  script.
+    const startEl = document.querySelector('#startTime')
+    const endEl = document.querySelector('#endTime')
+    const lengthEl = document.querySelector('#duration')
+    startEl.addEventListener('input', function() {
+      console.log('startTime changed!')
+    });
+    endEl.addEventListener('input', function() {
+      console.log('endTime changed!')
+    });
+    console.log('startEl:', startEl, '\nendEl:', endEl, '\nlengthEl:', lengthEl)
 
   //- .flex.flex-column.sm-flex-row
   //-   .col-12.sm-col-6.sm-mr3
