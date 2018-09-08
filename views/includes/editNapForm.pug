@@ -1,0 +1,39 @@
+form(action="/add-nap" method="POST")
+  script(src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js")
+  .col-9.mx-auto.flex.justify-around
+    div
+      - const now = new Date;
+      - const hours = now.getHours();
+      - const mins = now.getMinutes();
+      - function atLeastHalfPast(mins) { return mins >= 30 };
+      input(
+        type="time"
+        id="startTime"
+        name="startTime"
+        value=`${hours}:${mins}`
+        required).field
+      label(for="startTime").block Start time
+    div
+      input(
+        type="time"
+        id="endTime"
+        name="endTime"
+        value=`${hours}:${mins}`).field
+      label(for="endTime").block End time
+    div
+      input(
+        type="date"
+        id="startDate"
+        name="startDate").field
+      label(for="startDate").block Date
+    div
+      button(type="submit").btn.rounded.submitBtn Submit nap deets
+script.
+  // checkInput() via
+  // https://stackoverflow.com/a/10199306/2145103
+  function checkInput(type) {
+    var input = document.createElement("input");
+    input.setAttribute("type", type);
+    return input.type == type;
+  };
+  console.log('this browser implements input type="time": ', checkInput('time'))

@@ -3,26 +3,9 @@ html(lang="en")
   include includes/head.pug
 
   body.bg-hotpink
-    header.container
-      h1.center= h.siteName
-    main.container
-      form(action="/add-nap" method="POST")
-        .col-9.mx-auto.flex.justify-around
-          div
-            label(for="startTime").block.h3 Start time: 
-            input(type="time" id="startTime" name="startTime").field
-          div
-            label(for="endTime").block.h3 End time: 
-            input(type="time" id="endTime" name="endTime").field
-          div
-            label(for="startDate").block.h3 Date: 
-            input(type="date" id="startDate" name="startDate").field
-          div.self-flex-end
-            button(type="submit").btn.rounded.submitBtn Submit nap deets
-    script.
-      function checkInput(type) {
-        var input = document.createElement("input");
-        input.setAttribute("type", type);
-        return input.type == type;
-      };
-      console.log('this browser implements input type="time": ', checkInput('time'))
+
+    include includes/header.pug
+
+    main.mt4.container
+
+      include includes/editNapForm.pug
