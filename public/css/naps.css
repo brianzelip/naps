@@ -73,6 +73,10 @@ h6 {
     Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
+.h0 {
+  font-size: 3rem;
+}
+
 /* Color classes from Tachyons */
 .hotpink {
   color: var(--hotpink);
