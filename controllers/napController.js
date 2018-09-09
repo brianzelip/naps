@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const Nap = mongoose.model('Nap');
 
-exports.landingPage = (req, res) => {
-  res.render('editNap');
+exports.newNap = (req, res) => {
+  res.render('editNap', { title: 'add new nap' });
 };
 
-exports.addNapPOST = async (req, res) => {
+exports.newNapPOST = async (req, res) => {
   const nap = new Nap(req.body);
   await nap.save();
   // res.send(req.body);
