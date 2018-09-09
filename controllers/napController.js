@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Nap = mongoose.model('Nap');
 
 exports.landingPage = (req, res) => {
-  res.render('index');
+  res.render('editNap');
 };
 
 exports.addNapPOST = async (req, res) => {

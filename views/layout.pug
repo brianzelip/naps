@@ -1,0 +1,15 @@
+include mixins/_flashes
+
+doctype html
+html(lang="en-US")
+
+  include includes/head.pug
+
+  body.bg-hotpink
+    include includes/header.pug
+
+    block flashes
+      +flashes(nap)
+
+    main.mt4.container      
+      block content
