@@ -1,0 +1,10 @@
+mixin flashes(nap = {})
+
+  if Object.entries(locals.flashes).length > 0
+    //- pre= h.dump(locals.flashes)
+    - const categories = Object.keys(locals.flashes)
+    each category in categories
+      each message in flashes[category]
+        section.container.mt3
+          h1.m0.h4!= message
+          a.btn.h3.p0.cursor(onClick="this.parentElement.remove()") &times;

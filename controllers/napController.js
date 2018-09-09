@@ -8,5 +8,7 @@ exports.landingPage = (req, res) => {
 exports.addNapPOST = async (req, res) => {
   const nap = new Nap(req.body);
   await nap.save();
-  res.send(req.body);
+  // res.send(req.body);
+  req.flash('success', 'Member saved successfully!');
+  res.redirect('/');
 };
