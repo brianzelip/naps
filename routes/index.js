@@ -5,4 +5,6 @@ const { catchErrors } = require('../handlers/errorHandlers');
 
 router.get('/', napController.landingPage);
 
+router.post('/api/add-nap', napController.addNapPOST);
+
 module.exports = router;
