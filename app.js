@@ -5,6 +5,12 @@ const routes = require('./routes/index');
 const errorHandlers = require('./handlers/errorHandlers');
 const helpers = require('./helpers');
 
+// db connection modules
+const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 // create our Express app
 const app = express();
 
@@ -19,20 +25,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// // Sessions allow us to store data on visitors from request to request
-// // This keeps users logged in and allows us to send flash messages
-// app.use(
-//   session({
-//     secret: process.env.SECRET,
-//     key: process.env.KEY,
-//     resave: false,
-//     saveUninitialized: false,
-//     store: new MongoStore({ mongooseConnection: mongoose.connection })
-//   })
-// );
+// Sessions allow us to store data on visitors from request to request
+// This keeps users logged in and allows us to send flash messages
+app.use(
+  session({
+    secret: process.env.SECRET,
+    key: process.env.KEY,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
 
-// // // The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
-// app.use(flash());
+// The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
+app.use(flash());
 
 // pass variables to all views and requests
 app.use((req, res, next) => {
@@ -49,8 +55,8 @@ app.use('/', routes);
 // if a route doesn't exist, forward to error handler for 404
 app.use(errorHandlers.notFound);
 
-// // One of our error handlers will see if these errors are just validation errors
-// app.use(errorHandlers.flashValidationErrors);
+// One of our error handlers will see if these errors are just validation errors
+app.use(errorHandlers.flashValidationErrors);
 
 // Otherwise this was a really bad error we didn't expect! Shoot eh
 if (app.get('env') === 'development') {
