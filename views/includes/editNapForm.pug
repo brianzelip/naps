@@ -2,15 +2,14 @@ form(action="/add-nap" method="POST")
   script(src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js")
   .col-9.mx-auto.flex.justify-around
     div
-      - const now = new Date;
-      - const hours = now.getHours();
-      - const mins = now.getMinutes();
-      - function atLeastHalfPast(mins) { return mins >= 30 };
+      - const dateTime = new Date;
+      - const timeOpts = { hour12: true, hour: "numeric", minute: "2-digit" };
+      - const time = dateTime.toLocaleTimeString(timeOpts).replace(/(:\d{2}| [AP]M)$/, "");
       input(
         type="time"
         id="startTime"
         name="startTime"
-        value=`${hours}:${mins}`
+        value=`${time}`
         required).field
       label(for="startTime").block Start time
     div
@@ -18,7 +17,7 @@ form(action="/add-nap" method="POST")
         type="time"
         id="endTime"
         name="endTime"
-        value=`${hours}:${mins}`).field
+        value=`${time}`).field
       label(for="endTime").block End time
     div
       input(
