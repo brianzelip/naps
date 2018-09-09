@@ -15,9 +15,7 @@ const napSchema = new mongoose.Schema(
     endTime: {
       type: String,
       required: 'An end time must be entered!'
-    },
-    length: String,
-    notes: String
+    }
   },
   {
     timestamps: true
