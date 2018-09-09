@@ -5,6 +5,8 @@ exports.landingPage = (req, res) => {
   res.render('index');
 };
 
-exports.addNapPOST = (req, res) => {
+exports.addNapPOST = async (req, res) => {
+  const nap = new Nap(req.body);
+  await nap.save();
   res.send(req.body);
 };
