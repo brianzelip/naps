@@ -27,4 +27,7 @@ A nap has:
 
 ## dev notes
 
-1. time, https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time
+1. time
+   - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time
+   - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString
+   - https://stackoverflow.com/a/24086811/2145103
