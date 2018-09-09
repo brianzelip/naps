@@ -9,7 +9,6 @@ form(action="/add-nap" method="POST")
         type="time"
         id="startTime"
         name="startTime"
-        value=`${time}`
         required).field
       label(for="startTime").block Start time
     div
@@ -17,13 +16,14 @@ form(action="/add-nap" method="POST")
         type="time"
         id="endTime"
         name="endTime"
-        value=`${time}`).field
+        required).field
       label(for="endTime").block End time
     div
       input(
         type="date"
         id="startDate"
-        name="startDate").field
+        name="startDate"
+        required).field
       label(for="startDate").block Date
     div
       button(type="submit").btn.rounded.submitBtn Submit nap deets
