@@ -3,8 +3,8 @@ const router = express.Router();
 const napController = require('../controllers/napController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
-router.get('/', napController.landingPage);
+router.get('/', napController.newNap);
 
-router.post('/api/add-nap', napController.addNapPOST);
+router.post('/api/new-nap', napController.newNapPOST);
 
 module.exports = router;
