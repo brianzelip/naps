@@ -1,6 +1,6 @@
 # Naps
 
-A node web app for logging baby naps.
+Node web app for logging baby nap times.
 
 ## Data model brainstorm
 
