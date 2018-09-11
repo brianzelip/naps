@@ -14,11 +14,8 @@ exports.duration = function(end, start) {
   const napEnd = moment(end, 'hh:mm A');
   const napStart = moment(start, 'hh:mm A');
   console.log(
-    'HELPERS BE HELPING!',
-    'napStart: ',
-    napStart,
-    'napEnd: ',
-    napEnd
+    'MOMENT.DURATION().HUMANIZE() =>',
+    moment.duration(napEnd.diff(napStart, 'minutes'), 'minutes').humanize(false)
   );
   return napEnd.diff(napStart, 'minutes');
 };
