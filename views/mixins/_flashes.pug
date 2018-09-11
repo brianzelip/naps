@@ -6,5 +6,7 @@ mixin flashes(nap = {})
     each category in categories
       each message in flashes[category]
         section.container.mt3
-          h1.m0.h4!= message
-          a.btn.h3.p0.cursor(onClick="this.parentElement.remove()") &times;
+          .col-6.mx-auto.p3.border
+            .flex.justify-center
+              h1.m0.h4!= message
+              a.btn.h3.p0.cursor(onClick="this.parentElement.remove()") &times;
