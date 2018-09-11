@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const h = require('../helpers');
+
 // have to tell mongoose that we're using ES6 async/await
 mongoose.Promise = global.Promise;
 
@@ -15,7 +17,8 @@ const napSchema = new mongoose.Schema(
     endTime: {
       type: String,
       required: 'An end time must be entered!'
-    }
+    },
+    duration: Number
   },
   {
     timestamps: true
@@ -23,8 +26,7 @@ const napSchema = new mongoose.Schema(
 );
 
 napSchema.pre('save', function(next) {
-  // TODO calculate the nap length
-  // this.length =
+  this.duration = h.duration(this.endTime, this.startTime);
   next();
 }); // needs to be a long-form function because we need `this`, so arrow func won't do
 
