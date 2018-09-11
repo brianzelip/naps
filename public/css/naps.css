@@ -127,6 +127,9 @@ h6 {
 .self-flex-end {
   align-self: flex-end;
 }
+.justify-center {
+  justify-content: center;
+}
 .justify-around {
   justify-content: space-around;
 }
