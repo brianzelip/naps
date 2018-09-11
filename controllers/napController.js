@@ -12,10 +12,7 @@ exports.newNapPOST = async (req, res) => {
   // res.send(req.body);
   req.flash(
     'success',
-    `The ${duration(
-      req.body.endTime,
-      req.body.startTime
-    )} minute nap saved successfully!`
+    `A new ${duration(req.body.endTime, req.body.startTime)} min nap was saved!`
   );
   res.redirect('/');
 };
