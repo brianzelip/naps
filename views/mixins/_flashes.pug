@@ -5,8 +5,15 @@ mixin flashes(nap = {})
     - const categories = Object.keys(locals.flashes)
     each category in categories
       each message in flashes[category]
-        section.container.mt3
-          .col-6.mx-auto.p3.border
-            .flex.justify-center
+        section.container.mt3(data-js-flashContainer=message)
+          .flex.justify-center
+            .flex.p2.bg-white.rounded.hotpink
               h1.m0.h4!= message
-              a.btn.h3.p0.cursor(onClick="this.parentElement.remove()") &times;
+              a.btn.h3.p0.cursor(onClick=`removeFlash("${message}")`) &times;
+    script.
+      function removeFlash(msg) {
+        const selector = `[data-js-flashContainer="${msg}"]`
+        const flashContainer = document.querySelector(selector)
+        flashContainer.remove();
+        return;
+      }
