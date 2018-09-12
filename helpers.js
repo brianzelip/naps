@@ -3,6 +3,7 @@
 */
 
 const moment = require('moment');
+const momentDurationFormatSetup = require('moment-duration-format');
 
 // Dump is a handy debugging function we can use to sort of "console.log" our data
 exports.dump = obj => JSON.stringify(obj, null, 2);
@@ -10,12 +11,35 @@ exports.dump = obj => JSON.stringify(obj, null, 2);
 // Some details about the site
 exports.siteName = `Iva nap log`;
 
-exports.duration = function(end, start) {
+exports.duration = (end, start, returnType) => {
+  // end = moment string
+  // start = moment string
+  // returnType = 'number' (raw data) || 'string' (formatted)
   const napEnd = moment(end, 'hh:mm A');
   const napStart = moment(start, 'hh:mm A');
-  console.log(
-    'MOMENT.DURATION().HUMANIZE() =>',
-    moment.duration(napEnd.diff(napStart, 'minutes'), 'minutes').humanize(false)
-  );
-  return napEnd.diff(napStart, 'minutes');
+  const napLengthAsNumMins = napEnd.diff(napStart, 'minutes');
+  const napLengthAsString = moment
+    .duration(napEnd.diff(napStart, 'minutes'), 'minutes')
+    .format('h[hr] m[min]');
+
+  // console.log(
+  //   '\nMOMENT.DURATION().HUMANIZE() =>',
+  //   moment
+  //     .duration(napEnd.diff(napStart, 'minutes'), 'minutes')
+  //     .humanize(false),
+  //   '\nMOM.DUR.FOR =>',
+  //   moment
+  //     .duration(napEnd.diff(napStart, 'minutes'), 'minutes')
+  //     .format('h [hrs]'),
+  //   '\nLIL TIDBIT =>',
+  //   moment
+  //     .duration(napEnd.diff(napStart, 'minutes'), 'minutes')
+  //     .format('h[h] m[m]')
+  // );
+
+  if (returnType === 'number') {
+    return napLengthAsNumMins;
+  } else if (returnType === 'string') {
+    return napLengthAsString;
+  }
 };
