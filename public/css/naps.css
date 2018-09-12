@@ -170,3 +170,10 @@ h6 {
 .submitBtn:focus:active {
   box-shadow: var(--hotpink) 0px 0px 0px 2px, white 0px 0px 0px 4px;
 }
+
+/* responsive whitespace */
+@media (min-width: 64em) {
+  .lg-mb0 {
+    margin-bottom: 0;
+  }
+}

@@ -1,34 +1,33 @@
 mixin napForm(nap = {})
 
   form(action="/api/new-nap" method="POST")
-    script(src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js")
-    .flex.justify-around
-      //- The following creates a formatted time to pre-populate time inputs if so wished in the future
-      //- - const dateTime = new Date;
-      //- - const timeOpts = { hour12: true, hour: "numeric", minute: "2-digit" };
-      //- - const time = dateTime.toLocaleTimeString(timeOpts).replace(/(:\d{2}| [AP]M)$/, "");
-      div
+    //- The following creates a formatted time to pre-populate time inputs if so wished in the future
+    //- - const dateTime = new Date;
+    //- - const timeOpts = { hour12: true, hour: "numeric", minute: "2-digit" };
+    //- - const time = dateTime.toLocaleTimeString(timeOpts).replace(/(:\d{2}| [AP]M)$/, "");
+    .col-10.sm-col-6.md-col-4.lg-col-12.mx-auto.lg-flex.justify-around
+      .mb2.lg-mb0
         input(
           type="time"
           id="startTime"
           name="startTime"
           required).field
         label(for="startTime").block Start time
-      div
+      .mb2.lg-mb0
         input(
           type="time"
           id="endTime"
           name="endTime"
           required).field
         label(for="endTime").block End time
-      div
+      .mb2.lg-mb0
         input(
           type="date"
           id="date"
           name="date"
           required).field
         label(for="date").block Date
-      div
+      .mb2.lg-mb0
         input(
           type="text"
           id="notes"
