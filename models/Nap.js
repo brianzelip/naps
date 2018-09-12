@@ -26,7 +26,7 @@ const napSchema = new mongoose.Schema(
 );
 
 napSchema.pre('save', function(next) {
-  this.duration = h.duration(this.endTime, this.startTime);
+  this.duration = h.duration(this.endTime, this.startTime, 'number');
   next();
 }); // needs to be a long-form function because we need `this`, so arrow func won't do
 
