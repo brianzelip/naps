@@ -2,11 +2,12 @@ mixin napForm(nap = {})
 
   form(action="/api/new-nap" method="POST")
     script(src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js")
-    .col-9.mx-auto.flex.justify-around
+    .flex.justify-around
+      //- The following creates a formatted time to pre-populate time inputs if so wished in the future
+      //- - const dateTime = new Date;
+      //- - const timeOpts = { hour12: true, hour: "numeric", minute: "2-digit" };
+      //- - const time = dateTime.toLocaleTimeString(timeOpts).replace(/(:\d{2}| [AP]M)$/, "");
       div
-        - const dateTime = new Date;
-        - const timeOpts = { hour12: true, hour: "numeric", minute: "2-digit" };
-        - const time = dateTime.toLocaleTimeString(timeOpts).replace(/(:\d{2}| [AP]M)$/, "");
         input(
           type="time"
           id="startTime"
@@ -28,7 +29,13 @@ mixin napForm(nap = {})
           required).field
         label(for="date").block Date
       div
-        button(type="submit").btn.rounded.submitBtn Submit nap deets
+        input(
+          type="text"
+          id="notes"
+          name="notes").field
+        label(for="notes").block Notes
+      div
+        button(type="submit").btn.rounded.submitBtn Submit
   script.
     // checkInput() via
     // https://stackoverflow.com/a/10199306/2145103
