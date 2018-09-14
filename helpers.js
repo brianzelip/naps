@@ -12,6 +12,10 @@ exports.dump = obj => JSON.stringify(obj, null, 2);
 exports.siteName = `Iva nap log`;
 
 exports.time = {
+  // TODO: make more DRY by pulling out a fn
+  // that takes in start/end times,
+  // see this help:
+  // https://stackoverflow.com/questions/10918228/javascript-calling-object-methods-within-that-object#10918270
   napDuration(napStart, napEnd) {
     // returns a number
     // used in model
