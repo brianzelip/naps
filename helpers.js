@@ -11,35 +11,43 @@ exports.dump = obj => JSON.stringify(obj, null, 2);
 // Some details about the site
 exports.siteName = `Iva nap log`;
 
-exports.duration = (end, start, returnType) => {
-  // end = moment string
-  // start = moment string
-  // returnType = 'number' (raw data) || 'string' (formatted)
-  const napEnd = moment(end, 'hh:mm A');
-  const napStart = moment(start, 'hh:mm A');
-  const napLengthAsNumMins = napEnd.diff(napStart, 'minutes');
-  const napLengthAsString = moment
-    .duration(napEnd.diff(napStart, 'minutes'), 'minutes')
-    .format('h[hr] m[min]');
+exports.time = {
+  napDuration(napStart, napEnd) {
+    // returns a number
+    // used in model
 
-  // console.log(
-  //   '\nMOMENT.DURATION().HUMANIZE() =>',
-  //   moment
-  //     .duration(napEnd.diff(napStart, 'minutes'), 'minutes')
-  //     .humanize(false),
-  //   '\nMOM.DUR.FOR =>',
-  //   moment
-  //     .duration(napEnd.diff(napStart, 'minutes'), 'minutes')
-  //     .format('h [hrs]'),
-  //   '\nLIL TIDBIT =>',
-  //   moment
-  //     .duration(napEnd.diff(napStart, 'minutes'), 'minutes')
-  //     .format('h[h] m[m]')
-  // );
+    const s = moment(napStart, 'hh:mm A');
+    const e = moment(napEnd, 'hh:mm A');
+    const napLengthAsNumMins = e.diff(s, 'minutes');
 
-  if (returnType === 'number') {
     return napLengthAsNumMins;
-  } else if (returnType === 'string') {
+  },
+  napDurationFormatted(napStart, napEnd) {
+    // returns a formatted string
+    // used in controller
+
+    const s = moment(napStart, 'hh:mm A');
+    const e = moment(napEnd, 'hh:mm A');
+    const napLengthAsString = moment
+      .duration(e.diff(s, 'minutes'), 'minutes')
+      .format('h[hr] m[min]', { trim: 'small' });
+
     return napLengthAsString;
+  },
+  napCalendar(date) {
+    // returns a formatted string
+    // used in controller
+    // aka napDateHumanized()
+    // this humanized formatting is so named because moment calls it that, https://momentjs.com/docs/#/displaying/calendar-time/
+    const napDateRelativeToToday = moment(date, 'YYYY-MM-DD').calendar(null, {
+      sameDay: '[Today]',
+      nextDay: '[Tomorrow]',
+      nextWeek: 'dddd',
+      lastDay: '[Yesterday]',
+      lastWeek: '[Last] dddd',
+      sameElse: 'YYYY-MM-DD'
+    });
+
+    return napDateRelativeToToday;
   }
 };
