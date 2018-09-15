@@ -171,6 +171,20 @@ h6 {
   box-shadow: var(--hotpink) 0px 0px 0px 2px, white 0px 0px 0px 4px;
 }
 
+/* padding-top */
+.pt1 {
+  padding-top: 0.5rem;
+}
+.pt2 {
+  padding-top: 1rem;
+}
+.pt3 {
+  padding-top: 2rem;
+}
+.pt4 {
+  padding-top: 4rem;
+}
+
 /* responsive whitespace */
 @media (min-width: 64em) {
   .lg-mb0 {
