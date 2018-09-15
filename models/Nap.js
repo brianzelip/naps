@@ -18,6 +18,7 @@ const napSchema = new mongoose.Schema(
       type: String,
       required: 'An end time must be entered!'
     },
+    notes: String,
     duration: Number
   },
   {
