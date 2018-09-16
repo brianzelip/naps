@@ -1,40 +1,79 @@
 mixin napForm(nap = {})
 
+  style.
+    .grid {
+      display: grid;
+      grid-row-gap: 1rem;
+      grid-template-areas:
+        'start'
+        'end'
+        'date'
+        'notes'
+        'submit';
+    }
+    @media only screen and (min-width: 40em) {
+      .grid {
+        grid-template-columns: 50% 50%;
+        grid-gap: 1rem 1rem;
+        grid-template-areas:
+        'start end'
+        'date notes'
+        'submit submit';
+      }
+    }
+    [data-form-section='start'] {
+      grid-area: start;
+    }
+    [data-form-section='end'] {
+      grid-area: end;
+    }
+    [data-form-section='date'] {
+      grid-area: date;
+    }
+    [data-form-section='notes'] {
+      grid-area: notes;
+    }
+    [data-form-section='submit'] {
+      grid-area: submit;
+    }
+    .justify-self-center {
+      justify-self: center;
+    }
+
   form(action="/api/new-nap" method="POST")
     //- The following creates a formatted time to pre-populate time inputs if so wished in the future
     //- - const dateTime = new Date;
     //- - const timeOpts = { hour12: true, hour: "numeric", minute: "2-digit" };
     //- - const time = dateTime.toLocaleTimeString(timeOpts).replace(/(:\d{2}| [AP]M)$/, "");
-    .col-10.sm-col-6.md-col-4.lg-col-12.mx-auto.lg-flex.justify-around
-      .mb2.lg-mb0
+    .col-10.sm-col-6.md-col-4.lg-col-12.mx-auto.grid
+      section(data-form-section="start").flex.flex-column
+        label(for="startTime" id="startTimeLabel" style="order: 0").block Start time
         input(
-          type="time"
-          id="startTime"
-          name="startTime"
-          required).field
-        label(for="startTime").block Start time
-      .mb2.lg-mb0
+            type="time"
+            id="startTime"
+            name="startTime"
+            required).field.col-12
+      section(data-form-section="end").flex.flex-column
+        label(for="endTime" id="endTimeLabel" style="order: 0").block End time
         input(
           type="time"
           id="endTime"
           name="endTime"
-          required).field
-        label(for="endTime").block End time
-      .mb2.lg-mb0
+          required).field.col-12
+      section(data-form-section="date").flex.flex-column
+        label(for="date" id="dateLabel" style="order: 0").block Date
         input(
           type="date"
           id="date"
           name="date"
-          required).field
-        label(for="date").block Date
-      .mb2.lg-mb0
+          required).field.col-12
+      section(data-form-section="notes").flex.flex-column
+        label(for="notes" id="notesLabel" style="order: 0").block Notes
         input(
           type="text"
           id="notes"
-          name="notes").field
-        label(for="notes").block Notes
-      div
-        button(type="submit").btn.rounded.submitBtn Submit
+          name="notes").field.col-12
+      button(type="submit" data-form-section="submit").btn.rounded.submitBtn.submit.justify-self-center Submit
   script.
     // checkInput() via
     // https://stackoverflow.com/a/10199306/2145103
